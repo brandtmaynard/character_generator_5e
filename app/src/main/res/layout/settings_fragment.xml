@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="generatorViewModel"
+            type="com.example.charactergenerator5e.ui.generator.GeneratorViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.generator.SettingsFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/settings_list"
+            app:listData="@{generatorViewModel.settings}"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            app:layoutManager=
+                "androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
+            app:layout_constraintHorizontal_bias="0"
+            app:spanCount="1"
+            tools:itemCount="16"
+            tools:listitem="@layout/category_entry_item" />
+
+        <LinearLayout
+            android:id="@id/buttonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:context=".ui.generator.SettingsFragment" >
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:layout_gravity="center"
+                android:src="@drawable/back_button_icon"
+                android:layout_margin="6dp"
+                android:contentDescription="@string/back_button" />
+
+            <Button
+                android:id="@+id/selectAllButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:src="@drawable/back_button_icon"
+                android:layout_margin="6dp"
+                android:text="@string/select_all" />
+
+            <Button
+                android:id="@+id/deselectAllButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:src="@drawable/back_button_icon"
+                android:layout_margin="6dp"
+                android:text="@string/deselect_all" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

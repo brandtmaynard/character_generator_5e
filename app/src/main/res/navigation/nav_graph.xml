@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/generatorFragment">
+
+    <fragment
+        android:id="@+id/generatorFragment"
+        android:name="com.example.charactergenerator5e.ui.generator.GeneratorFragment"
+        android:label="GeneratorFragment"
+        tools:layout="@layout/generator_fragment" >
+        <action
+            android:id="@+id/action_generatorFragment_to_optionsFragment"
+            app:destination="@id/optionsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.charactergenerator5e.ui.generator.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/settings_fragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="com.example.charactergenerator5e.ui.generator.OptionsFragment"
+        android:label="OptionsFragment"
+        tools:layout="@layout/options_fragment" >
+        <action
+            android:id="@+id/action_optionsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_alignmentsFragment"
+            app:destination="@id/alignmentsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/alignmentsFragment"
+        android:name="com.example.charactergenerator5e.ui.generator.AlignmentsFragment"
+        android:label="alignments_fragment"
+        tools:layout="@layout/alignments_fragment" />
+</navigation>
