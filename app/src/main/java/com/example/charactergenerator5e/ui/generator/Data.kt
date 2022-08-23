@@ -10,6 +10,7 @@ val races: Map<String, List<String>?> = mapOf(
         "Protector",
         "Scourge"
     ),
+    "Autognome" to null,
     "Bugbear" to null,
     "Centaur" to null,
     "Changeling" to null,
@@ -29,6 +30,7 @@ val races: Map<String, List<String>?> = mapOf(
         "Mountain"
     ),
     "Elf" to listOf(
+        "Astral",
         "Drow",
         "Eladrin",
         "High",
@@ -46,6 +48,7 @@ val races: Map<String, List<String>?> = mapOf(
         "Fire",
         "Water"
     ),
+    "Giff" to null,
     "Gith" to listOf(
         "Githyanki",
         "Githzerai"
@@ -59,6 +62,7 @@ val races: Map<String, List<String>?> = mapOf(
     "Goblin" to null,
     "Goliath" to null,
     "Grung" to null,
+    "Hadozee" to null,
     "Half-Elf" to listOf(
         "Aquatic Elf Descent",
         "Drow Descent",
@@ -101,6 +105,7 @@ val races: Map<String, List<String>?> = mapOf(
     "Minotaur" to null,
     "Orc" to null,
     "Owlin" to null,
+    "Plasmoid" to null,
     "Reborn" to null,
     "Satyr" to null,
     "Shifter" to listOf(
@@ -111,6 +116,7 @@ val races: Map<String, List<String>?> = mapOf(
     ),
     "Simic Hybrid" to null,
     "Tabaxi" to null,
+    "Thri-kreen" to null,
     "Tiefling" to listOf(
         "Asmodeus",
         "Baalzebul",
@@ -287,6 +293,10 @@ val classes: Map<String, List<String>> = mapOf(
 // each key is the name of a source book
 // each value is a list of that book's backgrounds
 val backgrounds: Map<String, List<String>> = mapOf(
+    "AAG" to listOf(
+        "Astral Drifter",
+        "Wildspacer"
+    ),
     "AI" to listOf(
         "Celebrity Adventurer's Scion",
         "Failed Merchant",
