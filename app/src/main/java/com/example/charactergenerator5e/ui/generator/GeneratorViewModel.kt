@@ -40,7 +40,7 @@ class GeneratorViewModel : ViewModel() {
     val alignmentSettings = MutableLiveData<List<Entry>>()
     var settings: LiveData<List<Entry>> = raceSettings
 
-//  race options which a character becomes after birth, allowing them to coexist with other races
+//  race options which a character becomes after birth, allowing them to have a second race
     private val lineages = listOf("Dhampir", "Hexblood", "Reborn")
 
 //  options for specific races and classes which meaningfully flavor the resulting character
