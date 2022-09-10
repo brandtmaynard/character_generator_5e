@@ -66,9 +66,12 @@ class EntryAdapter(private val entryList: List<Entry>) : ListAdapter<Entry, Recy
         }
     }
 
-    fun updateParent(position: Int, childChecked: Boolean) {
-        if ((childChecked && !entryList[position].enabled.get()) || (!childChecked && !parentHasActiveChildren(position))) {
-            entryList[position].enabled.set(childChecked)
+//  enable parent if child is enabled, disable parent if all children are disabled
+    fun notifyParent(position: Int, childChecked: Boolean) {
+        if (childChecked) {
+            entryList[position].enabled.set(true)
+        } else if (getChildren(position).all { !it.enabled.get() }) {
+            entryList[position].enabled.set(false)
         }
     }
 
@@ -76,27 +79,18 @@ class EntryAdapter(private val entryList: List<Entry>) : ListAdapter<Entry, Recy
         entryList.subList(startPosition, endPosition).forEach {it.enabled.set(enabled)}
     }
 
-    fun parentHasActiveChildren(position: Int): Boolean {
-        return entryList.subList(position + 1, position + 1 + (entryList[position] as CategoryEntry).numberOfChildren).any { it.enabled.get() }
-    }
-
-    fun parentHasInactiveChildren(position: Int): Boolean {
-        return entryList.subList(position + 1, position + 1 + (entryList[position] as CategoryEntry).numberOfChildren).any { !it.enabled.get() }
+    private fun getChildren(position: Int): List<Entry> {
+        return entryList.subList(position + 1, position + 1 + (entryList[position] as CategoryEntry).numberOfChildren)
     }
 
     class CategoryEntryViewHolder(private var binding: CategoryEntryItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(entry: CategoryEntry, entryAdapter: EntryAdapter) {
             binding.entry = entry
+//          parents should update their children when toggled
             if (entry.numberOfChildren > 0) {
                 binding.entryCheckBox.setOnClickListener {
-                    if ((binding.entryCheckBox.isChecked || entryAdapter.parentHasInactiveChildren(adapterPosition))) {
-                        entryAdapter.updateSubList(true, adapterPosition, adapterPosition + 1 + entry.numberOfChildren)
-                    } else {
-                        entryAdapter.updateSubList(false, adapterPosition, adapterPosition + 1 + entry.numberOfChildren)
-                    }
+                    entryAdapter.updateSubList(binding.entryCheckBox.isChecked, adapterPosition, adapterPosition + 1 + entry.numberOfChildren)
                 }
-            } else {
-                binding.entryCheckBox.setOnClickListener {}
             }
             binding.executePendingBindings()
         }
@@ -105,8 +99,9 @@ class EntryAdapter(private val entryList: List<Entry>) : ListAdapter<Entry, Recy
     class SubcategoryEntryViewHolder(private var binding: SubcategoryEntryItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(entry: SubcategoryEntry, entryAdapter: EntryAdapter) {
             binding.entry = entry
+//          children should notify their parents when toggled
             binding.entryCheckBox.setOnClickListener {
-                entryAdapter.updateParent(entry.parentIndex, binding.entryCheckBox.isChecked)
+                entryAdapter.notifyParent(entry.parentIndex, binding.entryCheckBox.isChecked)
             }
             binding.executePendingBindings()
         }
