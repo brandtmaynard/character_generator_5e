@@ -91,6 +91,8 @@ class EntryAdapter(private val entryList: List<Entry>) : ListAdapter<Entry, Recy
                 binding.entryCheckBox.setOnClickListener {
                     entryAdapter.updateSubList(binding.entryCheckBox.isChecked, adapterPosition, adapterPosition + 1 + entry.numberOfChildren)
                 }
+            } else {
+                binding.entryCheckBox.setOnClickListener { }
             }
             binding.executePendingBindings()
         }
