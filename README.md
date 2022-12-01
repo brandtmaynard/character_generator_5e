@@ -2,6 +2,8 @@
 This Android app randomly generates a race, class, background, and alignment from the core and supplemental rulebooks and adventures for Dungeons & Dragons 5th Edition.
 It does not provide mechanical information about any of these options or how to play in general.
 
+![app preview](preview.png)
+
 Format:
 
 > Race, Subrace, Extra  
