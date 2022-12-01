@@ -96,6 +96,7 @@ val races: Map<String, List<String>?> = mapOf(
         "PHB"
     ),
     "Kalashtar" to null,
+    "Kender" to null,
     "Kenku" to null,
     "Kobold" to null,
     "Leonin" to null,
@@ -257,6 +258,7 @@ val classes: Map<String, List<String>> = mapOf(
         "Clockwork Soul",
         "Divine Soul",
         "Draconic Bloodline",
+        "Lunar Sorcery",
         "Shadow Sorcery",
         "Storm Sorcery",
         "Wild Magic"
@@ -303,6 +305,10 @@ val backgrounds: Map<String, List<String>> = mapOf(
         "Gambler",
         "Plaintiff",
         "Rival Intern"
+    ),
+    "DSotDQ" to listOf(
+        "Knight of Solamnia",
+        "Mage of High Sorcery"
     ),
     "EGW" to listOf(
         "Augen Trust",
